@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueSky Dash - Generate Icons</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        h1 {
+            color: #1DA1F2;
+            margin-bottom: 30px;
+        }
+        .canvas-container {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            display: block;
+            border-radius: 8px;
+        }
+        a {
+            display: inline-block;
+            background: linear-gradient(135deg, #1DA1F2 0%, #0D8BD9 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        a:hover {
+            transform: translateY(-2px);
+        }
+        .info {
+            color: #666;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐦 BlueSky Dash Icons</h1>
+    
+    <div class="canvas-container">
+        <h3>Icon (200x200)</h3>
+        <canvas id="iconCanvas" width="200" height="200"></canvas>
+        <a id="iconDownload" download="icon.png">Download icon.png</a>
+        <p class="info">App icon for Farcaster</p>
+    </div>
+    
+    <div class="canvas-container">
+        <h3>Preview (600x400)</h3>
+        <canvas id="previewCanvas" width="600" height="400"></canvas>
+        <a id="previewDownload" download="preview.png">Download preview.png</a>
+        <p class="info">Preview image for embeds</p>
+    </div>
+
+    <script>
+        // Draw Icon (200x200)
+        function drawIcon() {
+            const canvas = document.getElementById('iconCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+            gradient.addColorStop(0, '#87CEEB');
+            gradient.addColorStop(1, '#B0E0E6');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 200, 200);
+            
+            // Sun
+            ctx.fillStyle = '#FFE066';
+            ctx.beginPath();
+            ctx.arc(160, 40, 30, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Cloud
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.beginPath();
+            ctx.arc(45, 50, 20, 0, Math.PI * 2);
+            ctx.arc(70, 40, 25, 0, Math.PI * 2);
+            ctx.arc(95, 50, 20, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Bird body
+            ctx.fillStyle = '#1DA1F2';
+            ctx.beginPath();
+            ctx.ellipse(100, 110, 45, 35, 0, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Wing
+            ctx.fillStyle = '#0D8BD9';
+            ctx.beginPath();
+            ctx.ellipse(85, 120, 20, 12, -0.3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Eye
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(125, 100, 12, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#333';
+            ctx.beginPath();
+            ctx.arc(128, 100, 6, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Beak
+            ctx.fillStyle = '#FFB347';
+            ctx.beginPath();
+            ctx.moveTo(145, 110);
+            ctx.lineTo(170, 115);
+            ctx.lineTo(145, 120);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Title
+            ctx.fillStyle = '#1DA1F2';
+            ctx.font = 'bold 22px Segoe UI';
+            ctx.textAlign = 'center';
+            ctx.fillText('BlueSky', 100, 170);
+            ctx.fillText('Dash', 100, 192);
+            
+            // Set download link
+            document.getElementById('iconDownload').href = canvas.toDataURL('image/png');
+        }
+        
+        // Draw Preview (600x400)
+        function drawPreview() {
+            const canvas = document.getElementById('previewCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, '#87CEEB');
+            gradient.addColorStop(0.5, '#B0E0E6');
+            gradient.addColorStop(1, '#FFF5E6');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 600, 400);
+            
+            // Sun
+            ctx.fillStyle = '#FFE066';
+            ctx.beginPath();
+            ctx.arc(520, 70, 50, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#FFF8DC';
+            ctx.beginPath();
+            ctx.arc(520, 70, 38, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Background clouds
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.beginPath();
+            ctx.arc(80, 80, 30, 0, Math.PI * 2);
+            ctx.arc(120, 65, 40, 0, Math.PI * 2);
+            ctx.arc(160, 80, 30, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(400, 120, 25, 0, Math.PI * 2);
+            ctx.arc(435, 105, 35, 0, Math.PI * 2);
+            ctx.arc(470, 120, 25, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Obstacle clouds
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.beginPath();
+            ctx.arc(450, 60, 35, 0, Math.PI * 2);
+            ctx.arc(480, 45, 40, 0, Math.PI * 2);
+            ctx.arc(510, 60, 35, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(450, 340, 35, 0, Math.PI * 2);
+            ctx.arc(480, 355, 40, 0, Math.PI * 2);
+            ctx.arc(510, 340, 35, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Bird
+            ctx.fillStyle = '#1DA1F2';
+            ctx.beginPath();
+            ctx.ellipse(180, 200, 50, 38, 0, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Wing
+            ctx.fillStyle = '#0D8BD9';
+            ctx.beginPath();
+            ctx.ellipse(160, 215, 22, 14, -0.3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Eye
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(210, 188, 14, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#333';
+            ctx.beginPath();
+            ctx.arc(214, 188, 7, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Beak
+            ctx.fillStyle = '#FFB347';
+            ctx.beginPath();
+            ctx.moveTo(228, 200);
+            ctx.lineTo(255, 206);
+            ctx.lineTo(228, 212);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Star power-up
+            ctx.fillStyle = '#FFD700';
+            ctx.save();
+            ctx.translate(350, 200);
+            ctx.beginPath();
+            for (let i = 0; i < 5; i++) {
+                const angle = (i * 4 * Math.PI) / 5 - Math.PI / 2;
+                const px = Math.cos(angle) * 25;
+                const py = Math.sin(angle) * 25;
+                if (i === 0) ctx.moveTo(px, py);
+                else ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+            
+            // Title
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 48px Segoe UI';
+            ctx.textAlign = 'center';
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+            ctx.shadowBlur = 10;
+            ctx.shadowOffsetX = 3;
+            ctx.shadowOffsetY = 3;
+            ctx.fillText('BlueSky Dash', 300, 350);
+            
+            ctx.shadowBlur = 0;
+            ctx.font = '20px Segoe UI';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.fillText('Tap to fly • Dodge clouds • Collect stars', 300, 385);
+            
+            // Set download link
+            document.getElementById('previewDownload').href = canvas.toDataURL('image/png');
+        }
+        
+        // Generate both
+        drawIcon();
+        drawPreview();
+    </script>
+</body>
+</html>

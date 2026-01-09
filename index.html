@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="fc:frame" content="vNext">
+    <meta name="fc:miniapp" content='{"version":"1","name":"BlueSky Dash","iconUrl":"icon.png","splashImageUrl":"icon.png","splashBackgroundColor":"#87CEEB"}'>
+    <meta name="base:app_id" content="[SONRA EKLENECEK]">
+    <meta property="og:title" content="BlueSky Dash">
+    <meta property="og:description" content="A relaxing sky adventure game. Tap to fly!">
+    <meta property="og:image" content="preview.png">
+    <title>BlueSky Dash</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="start-screen">
+            <h1>🐦 BlueSky Dash</h1>
+            <p>Tap or click to fly!</p>
+            <p>Avoid clouds and storms</p>
+            <p>Collect ⭐ for bonus points</p>
+            <button id="startBtn">START</button>
+        </div>
+        <div id="game-over" class="hidden">
+            <h2>Game Over</h2>
+            <p>Score: <span id="final-score">0</span></p>
+            <p>Best: <span id="best-score">0</span></p>
+            <button id="restartBtn">PLAY AGAIN</button>
+        </div>
+        <div id="score-display">0</div>
+    </div>
+    <script type="module" src="game.js"></script>
+</body>
+</html>
