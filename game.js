@@ -118,11 +118,11 @@ function drawBird() {
 
 // Create obstacle (cloud or storm)
 function createObstacle() {
-    const gap = 180;
-    const minHeight = 80;
+    const gap = 220;
+    const minHeight = 60;
     const maxHeight = canvas.height - gap - minHeight;
     const topHeight = Math.random() * (maxHeight - minHeight) + minHeight;
-    const isStorm = Math.random() < 0.3;
+    const isStorm = Math.random() < 0.2;
     
     obstacles.push({
         x: canvas.width,
@@ -320,7 +320,7 @@ function update() {
     
     // Move obstacles
     obstacles.forEach((obs, i) => {
-        obs.x -= 3;
+        obs.x -= 2.5;
         
         if (obs.x + obs.width < bird.x && !obs.passed) {
             obs.passed = true;
@@ -349,7 +349,7 @@ function update() {
     });
     
     // Spawn
-    if (obstacles.length === 0 || obstacles[obstacles.length - 1].x < canvas.width - 250) {
+    if (obstacles.length === 0 || obstacles[obstacles.length - 1].x < canvas.width - 320) {
         createObstacle();
     }
     createPowerUp();
